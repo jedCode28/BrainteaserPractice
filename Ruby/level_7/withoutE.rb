@@ -5,13 +5,13 @@
 # If given String is `null`/`None`/`nil`, it returns `null`/`None`/`nil`
 
 def find_e(s)
-if s == ""
-  ""
-elsif s.nil? 
-  nil
-elsif s.include?("e") || s.include?("E")
-  s.count("e" + "E").to_s
-else 
-  "There is no \"e\"."
-end 
+  if s == ""
+    ""
+  elsif s.nil? 
+    nil
+  elsif s.include?("e") || s.include?("E")
+    s.count("e" + "E").to_s
+  else 
+    "There is no \"e\"."
+  end 
 end
