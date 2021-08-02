@@ -133,3 +133,59 @@ SELECT name FROM world
 -- Tanzania
 -- Trinidad and Tobago
 -- United Arab Emirates
+
+
+-- 8.
+-- India and Angola have an n as the second character. You can use the underscore as a single character wildcard.
+-- Find the countries that have "t" as the second character.
+
+SELECT name FROM world
+ WHERE name LIKE '_T%'
+ORDER BY name
+
+-- output: 
+
+-- name
+-- Ethiopia
+-- Italy
+
+
+-- 9.
+-- Lesotho and Moldova both have two o characters separated by two other characters.
+-- Find the countries that have two "o" characters separated by two others.
+
+SELECT name FROM world
+ WHERE name LIKE '%O__O%'
+
+-- output: 
+
+-- name
+-- Congo, Democratic Republic of
+-- Congo, Republic of
+-- Lesotho
+-- Moldova
+-- Mongolia
+-- Morocco
+-- Sao Tomé and Príncipe
+
+
+-- 10.
+-- Cuba and Togo have four characters names.
+-- Find the countries that have exactly four characters.
+
+SELECT name FROM world
+ WHERE name LIKE '____'
+
+--  output: 
+
+--  name
+-- Chad
+-- Cuba
+-- Fiji
+-- Iran
+-- Iraq
+-- Laos
+-- Mali
+-- Oman
+-- Peru
+-- Togo
