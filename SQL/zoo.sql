@@ -189,3 +189,61 @@ SELECT name FROM world
 -- Oman
 -- Peru
 -- Togo
+
+
+-- 11.
+-- The capital of Luxembourg is Luxembourg. Show all the countries where the capital is the same as the name of the country
+-- Find the country where the name is the capital city.
+
+SELECT name
+  FROM world
+ WHERE name  = capital
+
+-- output:
+
+
+-- name
+-- Djibouti
+-- Luxembourg
+-- San Marino
+-- Singapore
+
+
+-- 12.
+-- The capital of Mexico is Mexico City. Show all the countries where the capital has the country together with the word "City".
+-- Find the country where the capital is the country plus "City".
+
+
+SELECT name
+  FROM world
+ WHERE capital LIKE concat(name, ' City')
+
+--  output: 
+
+--  name
+-- Guatemala
+-- Kuwait
+-- Mexico
+-- Panama
+
+
+-- 13.
+-- Find the capital and the name where the capital includes the name of the country.
+
+SELECT  capital, name
+FROM world
+WHERE capital LIKE concat('%', name, '%')
+
+-- output: 
+
+-- capital	name
+-- Andorra la Vella	Andorra
+-- Djibouti	Djibouti
+-- Guatemala City	Guatemala
+-- Kuwait City	Kuwait
+-- Luxembourg	Luxembourg
+-- Mexico City	Mexico
+-- Monaco-Ville	Monaco
+-- Panama City	Panama
+-- San Marino	San Marino
+-- Singapore	Singapore
