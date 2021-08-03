@@ -229,3 +229,88 @@ WHERE subject = 'Medicine' AND yr < 1910 OR subject = 'Literature' AND yr >= 200
 -- 2015	Literature	Svetlana Alexievich
 -- 2016	Literature	Bob Dylan
 -- 2017	Literature	Kazuo Ishiguro
+
+
+-- 11.
+-- Find all details of the prize won by PETER GRÜNBERG
+
+SELECT *
+FROM nobel
+WHERE winner LIKE 'Peter Gr%'
+
+-- output: 
+
+-- yr	subject	winner
+-- 2007	Physics	Peter Grünberg
+
+
+-- 12.
+-- Find all details of the prize won by EUGENE O'NEILL
+
+SELECT *
+FROM nobel
+WHERE winner LIKE 'Eugene %Neill'
+
+-- output: 
+
+-- yr	subject	winner
+-- 1936	Literature	Eugene O'Neill
+
+
+-- 13.
+-- Knights in order
+-- List the winners, year and subject where the winner starts with Sir. Show the the most recent first, then by name order.
+
+SELECT winner, yr, subject
+FROM nobel
+WHERE winner LIKE 'Sir%' ORDER BY yr DESC,winner
+
+-- output: 
+
+-- winner	yr	subject
+-- Sir Martin J. Evans	2007	Medicine
+-- Sir Peter Mansfield	2003	Medicine
+-- Sir Paul Nurse	2001	Medicine
+-- Sir Harold Kroto	1996	Chemistry
+-- Sir James W. Black	1988	Medicine
+-- Sir Arthur Lewis	1979	Economics
+-- Sir Nevill F. Mott	1977	Physics
+-- Sir Bernard Katz	1970	Medicine
+-- Sir John Eccles	1963	Medicine
+-- Sir Frank Macfarlane Burnet	1960	Medicine
+-- Sir Cyril Hinshelwood	1956	Chemistry
+-- Sir Robert Robinson	1947	Chemistry
+-- Sir Alexander Fleming	1945	Medicine
+-- Sir Howard Florey	1945	Medicine
+-- Sir Henry Dale	1936	Medicine
+-- Sir Norman Angell	1933	Peace
+-- Sir Charles Sherrington	1932	Medicine
+-- Sir Venkata Raman	1930	Physics
+-- Sir Frederick Hopkins	1929	Medicine
+-- Sir Austen Chamberlain	1925	Peace
+-- Sir William Ramsay	1904	Chemistry
+
+
+-- 14.
+-- The expression subject IN ('Chemistry','Physics') can be used as a value - it will be 0 or 1.
+-- Show the 1984 winners and subject ordered by subject and winner name; but list Chemistry and Physics last.
+
+SELECT winner, subject
+  FROM nobel
+ WHERE yr=1984
+ ORDER BY 
+ CASE WHEN subject IN ('Physics', 'Chemistry') THEN 1 ELSE 0 END, 
+ subject,winner
+
+-- output: 
+
+-- winner	subject
+-- Richard Stone	Economics
+-- Jaroslav Seifert	Literature
+-- César Milstein	Medicine
+-- Georges J.F. Köhler	Medicine
+-- Niels K. Jerne	Medicine
+-- Desmond Tutu	Peace
+-- Bruce Merrifield	Chemistry
+-- Carlo Rubbia	Physics
+-- Simon van der Meer	Physics
