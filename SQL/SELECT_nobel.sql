@@ -113,10 +113,119 @@ WHERE subject = 'Literature' AND 1980 <= yr AND yr <= 1989
 SELECT * FROM nobel
  WHERE winner IN ('Theodore Roosevelt', 'Woodrow Wilson', 'Jimmy Carter', 'Barack Obama')
 
-output: 
+-- output: 
 
 -- yr	subject	winner
 -- 1906	Peace	Theodore Roosevelt
 -- 1919	Peace	Woodrow Wilson
 -- 2002	Peace	Jimmy Carter
 -- 2009	Peace	Barack Obama
+
+
+-- 7.
+-- Show the winners with first name John
+
+SELECT winner
+FROM nobel
+WHERE winner LIKE 'John%'
+
+-- output: 
+
+-- winner
+-- John Macleod
+-- John Galsworthy
+-- John H. Northrop
+-- John R. Mott
+-- John Cockcroft
+-- John F. Enders
+-- John Bardeen
+-- John C. Kendrew
+-- John Steinbeck
+-- John R. Hicks
+-- John Bardeen
+-- John Cornforth
+-- John H. van Vleck
+-- John R. Vane
+-- John C. Polanyi
+-- John C. Harsanyi
+-- John F. Nash Jr.
+-- John E. Walker
+-- John Pople
+-- John Hume
+-- John B. Fenn
+-- John E. Sulston
+-- John L. Hall
+-- John C. Mather
+-- John B. Gurdon
+-- John O'Keefe
+-- John M. Kosterlitz
+
+
+-- 8.
+-- Show the year, subject, and name of Physics winners for 1980 together with the Chemistry winners for 1984.
+
+SELECT yr, subject, winner
+FROM nobel
+WHERE yr = 1980 AND subject = 'Physics' OR yr = 1984 AND subject = 'Chemistry'
+
+-- output: 
+
+-- yr	subject	winner
+-- 1980	Physics	James Cronin
+-- 1980	Physics	Val Fitch
+-- 1984	Chemistry	Bruce Merrifield
+
+
+-- 9.
+-- Show the year, subject, and name of winners for 1980 excluding Chemistry and Medicine
+
+SELECT * 
+FROM nobel
+WHERE yr = 1980 AND NOT nobel.subject = 'Chemistry' AND NOT nobel.subject = 'Medicine' 
+
+-- output: 
+
+-- yr	subject	winner
+-- 1980	Economics	Lawrence R. Klein
+-- 1980	Literature	Czeslaw Milosz
+-- 1980	Peace	Adolfo Pérez Esquivel
+-- 1980	Physics	James Cronin
+-- 1980	Physics	Val Fitch
+
+
+-- 10.
+-- Show year, subject, and name of people who won a 'Medicine' prize in an early year (before 1910, not including 1910)
+-- together with winners of a 'Literature' prize in a later year (after 2004, including 2004)
+
+SELECT *
+FROM nobel
+WHERE subject = 'Medicine' AND yr < 1910 OR subject = 'Literature' AND yr >= 2004
+
+-- output: 
+
+-- yr	subject	winner
+-- 1901	Medicine	Emil von Behring
+-- 1902	Medicine	Ronald Ross
+-- 1903	Medicine	Niels Ryberg Finsen
+-- 1904	Medicine	Ivan Pavlov
+-- 1905	Medicine	Robert Koch
+-- 1906	Medicine	Camillo Golgi
+-- 1906	Medicine	Santiago Ramón y Cajal
+-- 1907	Medicine	Alphonse Laveran
+-- 1908	Medicine	Ilya Mechnikov
+-- 1908	Medicine	Paul Ehrlich
+-- 1909	Medicine	Theodor Kocher
+-- 2004	Literature	Elfriede Jelinek
+-- 2005	Literature	Harold Pinter
+-- 2006	Literature	Orhan Pamuk
+-- 2007	Literature	Doris Lessing
+-- 2008	Literature	Jean-Marie Gustave Le Clézio
+-- 2009	Literature	Herta Müller
+-- 2010	Literature	Mario Vargas Llosa
+-- 2011	Literature	Tomas Tranströmer
+-- 2012	Literature	Mo Yan
+-- 2013	Literature	Alice Munro
+-- 2014	Literature	Patrick Modiano
+-- 2015	Literature	Svetlana Alexievich
+-- 2016	Literature	Bob Dylan
+-- 2017	Literature	Kazuo Ishiguro
