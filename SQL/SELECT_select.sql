@@ -221,3 +221,23 @@ WHERE area >= ALL
 -- Eurasia	Russia	17125242
 
 
+-- 8.
+-- List each continent and the name of the country that comes first alphabetically.
+
+SELECT continent, min(name)
+FROM world
+GROUP BY continent
+
+-- output: 
+
+-- continent	
+-- Africa	Algeria
+-- Asia	Afghanistan
+-- Caribbean	Antigua and Barbuda
+-- Eurasia	Armenia
+-- Europe	Albania
+-- North America	Belize
+-- Oceania	Australia
+-- South America	Argentina
+
+
