@@ -286,10 +286,10 @@ WHERE y.continent = x.continent)
 -- Some countries have populations more than three times that of any of their neighbours 
 -- (in the same continent). Give the countries and continents.
 
-SELECT x.name, x.continent
+SELECT name, continent
 FROM world x
-WHERE x.population/3 > ALL(
-SELECT y.population 
+WHERE population/3 > ALL(
+SELECT population 
 FROM world y
 WHERE x.continent = y.continent  
 AND x.name != y.name)
