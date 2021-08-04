@@ -241,3 +241,62 @@ GROUP BY continent
 -- South America	Argentina
 
 
+-- 9.
+-- Find the continents where all countries have a population <= 25000000. 
+-- Then find the names of the countries associated with these continents. Show name, continent and population.
+
+SELECT name, continent, population
+FROM world x
+WHERE 25000000 > ALL(
+SELECT population
+FROM world y
+WHERE y.continent = x.continent)
+
+-- output: 
+
+-- name	continent	population
+-- Antigua and Barbuda	Caribbean	86295
+-- Australia	Oceania	23545500
+-- Bahamas	Caribbean	351461
+-- Barbados	Caribbean	285000
+-- Cuba	Caribbean	11167325
+-- Dominica	Caribbean	71293
+-- Dominican Republic	Caribbean	9445281
+-- Fiji	Oceania	858038
+-- Grenada	Caribbean	103328
+-- Haiti	Caribbean	10413211
+-- Jamaica	Caribbean	2717991
+-- Kiribati	Oceania	106461
+-- Marshall Islands	Oceania	56086
+-- Micronesia, Federated States of	Oceania	101351
+-- Nauru	Oceania	9945
+-- New Zealand	Oceania	4538520
+-- Palau	Oceania	20901
+-- Papua New Guinea	Oceania	7398500
+-- Saint Lucia	Caribbean	180000
+-- Samoa	Oceania	187820
+-- Solomon Islands	Oceania	581344
+-- Tonga	Oceania	103036
+-- Trinidad and Tobago	Caribbean	1328019
+-- Tuvalu	Oceania	11323
+-- Vanuatu	Oceania	264652
+
+
+-- 10.
+-- Some countries have populations more than three times that of any of their neighbours 
+-- (in the same continent). Give the countries and continents.
+
+SELECT x.name, x.continent
+FROM world x
+WHERE x.population/3 > ALL(
+SELECT y.population 
+FROM world y
+WHERE x.continent = y.continent  
+AND x.name != y.name)
+
+-- output: 
+
+-- name	continent
+-- Russia	Eurasia
+-- Australia	Oceania
+-- Brazil	South America
