@@ -221,3 +221,21 @@ GROUP BY matchid, mdate
 -- 1005	16 June 2012	1
 
 
+-- 12.
+-- For every match where 'GER' scored, show matchid, match date and the number of goals scored by 'GER'
+
+SELECT matchid, mdate, COUNT(teamid)
+FROM game JOIN goal ON matchid = id
+WHERE teamid = 'GER'
+GROUP BY matchid, mdate
+
+-- output: 
+
+-- matchid	mdate	COUNT(teamid)
+-- 1008	9 June 2012	1
+-- 1010	13 June 2012	2
+-- 1012	17 June 2012	2
+-- 1026	22 June 2012	4
+-- 1030	28 June 2012	1
+
+
