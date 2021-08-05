@@ -140,3 +140,84 @@ WHERE stadium = 'National Stadium, Warsaw'
 -- Mesut Özil
 
 
+-- 8.
+-- Show the name of all players who scored a goal against Germany.
+
+SELECT DISTINCT(player)
+FROM game JOIN goal ON (matchid=id)
+WHERE (team1='GER' OR team2='GER') AND (teamid!='GER')
+
+-- output: 
+
+-- player
+-- Robin van Persie
+-- Michael Krohn-Dehli
+-- Georgios Samaras
+-- Dimitris Salpingidis
+-- Mario Balotelli
+
+
+-- 9.
+-- Show teamname and the total number of goals scored.
+
+SELECT teamname, COUNT(*)
+  FROM eteam JOIN goal ON id=teamid
+GROUP BY teamname
+
+-- output: 
+
+-- teamname	COUNT(*)
+-- Croatia	4
+-- Czech Republic	4
+-- Denmark	4
+-- England	5
+-- France	3
+-- Germany	10
+-- Greece	5
+-- Italy	6
+-- Netherlands	2
+-- Poland	2
+-- Portugal	6
+-- Republic of Ireland	1
+-- Russia	5
+-- Spain	12
+-- Sweden	5
+-- Ukraine	2
+
+
+-- 10.
+-- Show the stadium and the number of goals scored in each stadium.
+
+SELECT stadium, COUNT(*)
+FROM game JOIN goal ON (id=matchid)
+GROUP BY stadium
+
+-- output: 
+
+-- stadium	COUNT(*)
+-- Arena Lviv	9
+-- Donbass Arena	7
+-- Metalist Stadium	7
+-- National Stadium, Warsaw	9
+-- Olimpiyskiy National Sports Complex	14
+-- PGE Arena Gdansk	13
+-- Stadion Miejski (Poznan)	8
+-- Stadion Miejski (Wroclaw)	9
+
+
+-- 11.
+-- For every match involving 'POL', show the matchid, date and the number of goals scored.
+
+SELECT DISTINCT(matchid),mdate,COUNT(teamid)
+FROM game JOIN goal ON matchid = id 
+WHERE (team1 = 'POL' OR team2 = 'POL')
+GROUP BY matchid, mdate
+
+-- output: 
+
+-- matchid	mdate	COUNT(teamid)
+-- 1001	8 June 2012	2
+-- 1004	12 June 2012	2
+-- 1005	16 June 2012	1
+
+
