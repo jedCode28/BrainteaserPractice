@@ -65,3 +65,132 @@ WHERE yr=1962
 -- Results truncated. Only the first 50 rows have been shown.
 
 
+-- 2.
+-- Give year of 'Citizen Kane'.
+
+SELECT yr
+FROM movie
+WHERE title = 'Citizen Kane'
+
+-- output: 
+
+-- yr
+-- 1941
+
+
+-- 3.
+-- List all of the Star Trek movies, include the id, title and yr 
+-- (all of these movies include the words Star Trek in the title). Order results by year.
+
+SELECT id, title, yr
+FROM movie
+WHERE title LIKE 'Star Trek%'
+ORDER BY yr
+
+-- output: 
+
+-- id	title	yr
+-- 17772	Star Trek: The Motion Picture	1979
+-- 17775	Star Trek II: The Wrath of Khan	1982
+-- 17776	Star Trek III: The Search for Spock	1984
+-- 17777	Star Trek IV: The Voyage Home	1986
+-- 17779	Star Trek V: The Final Frontier	1989
+-- 17780	Star Trek VI: The Undiscovered Country	1991
+-- 17774	Star Trek Generations	1994
+-- 17770	Star Trek: First Contact	1996
+-- 17771	Star Trek: Insurrection	1998
+-- 17778	Star Trek Nemesis	2002
+-- 17773	Star Trek	2009
+
+
+-- 4.
+-- What id number does the actor 'Glenn Close' have?
+
+SELECT id
+FROM actor
+WHERE name = 'Glenn Close'
+
+-- output: 
+
+-- id
+-- 140
+
+
+-- 5.
+-- What is the id of the film 'Casablanca'
+
+SELECT id
+FROM movie 
+WHERE title = 'Casablanca'
+
+-- output: 
+
+-- id
+-- 11768
+
+
+-- 6.
+-- Obtain the cast list for 'Casablanca'.
+
+SELECT name
+FROM casting JOIN actor ON actorid=id
+WHERE movieid = 11768
+
+-- output: 
+
+
+-- name
+-- Peter Lorre
+-- John Qualen
+-- Madeleine LeBeau
+-- Jack Benny
+-- Dan Seymour
+-- Norma Varden
+-- Ingrid Bergman
+-- Conrad Veidt
+-- Leon Belasco
+-- Humphrey Bogart
+-- Sydney Greenstreet
+-- Helmut Dantine
+-- Leonid Kinskey
+-- Wolfgang Zilzer
+-- Claude Rains
+-- Curt Bois
+-- Leo White
+-- Ludwig StÃ¶ssel
+-- Marcel Dalio
+-- Paul Henreid
+-- Joy Page
+-- S. Z. Sakall
+-- Dooley Wilson
+-- William Edmunds
+-- Gregory Gaye
+-- Torben Meyer
+-- Georges Renavent
+-- Jean Del Val
+-- Louis V. Arco
+-- Trude Berliner
+-- Ilka GrÃ¼nig
+-- Richard Ryen
+-- Hans Twardowski
+
+
+-- 7.
+-- Obtain the cast list for the film 'Alien'
+
+SELECT name
+FROM casting JOIN actor ON actorid=id
+WHERE movieid = 10522
+
+-- output: 
+
+-- name
+-- John Hurt
+-- Sigourney Weaver
+-- Yaphet Kotto
+-- Harry Dean Stanton
+-- Ian Holm
+-- Tom Skerritt
+-- Veronica Cartwright
+
+
