@@ -194,3 +194,152 @@ WHERE movieid = 10522
 -- Veronica Cartwright
 
 
+-- 8.
+-- List the films in which 'Harrison Ford' has appeared
+
+SELECT title
+FROM casting JOIN movie ON id = movieid
+WHERE actorid = 2216
+
+-- output: 
+
+-- title
+-- A Hundred and One Nights
+-- Air Force One
+-- American Graffiti
+-- Apocalypse Now
+-- Clear and Present Danger
+-- Cowboys & Aliens
+-- Crossing Over
+-- Dead Heat on a Merry-Go-Round
+-- Extraordinary Measures
+-- Firewall
+-- Force 10 From Navarone
+-- Hanover Street
+-- Hawthorne of the U.S.A.
+-- Hollywood Homicide
+-- Indiana Jones and the Kingdom of the Crystal Skull
+-- Indiana Jones and the Last Crusade
+-- Indiana Jones and the Temple of Doom
+-- Jimmy Hollywood
+-- K-19: The Widowmaker
+-- More American Graffiti
+-- Morning Glory
+-- Patriot Games
+-- Presumed Innocent
+-- Raiders of the Lost Ark
+-- Random Hearts
+-- Regarding Henry
+-- Sabrina
+-- Sally of the Sawdust
+-- Shadows
+-- Six Days Seven Nights
+-- Smilin' Through
+-- Star Wars Episode IV: A New Hope
+-- Star Wars Episode V: The Empire Strikes Back
+-- Star Wars Episode VI: Return of the Jedi
+-- The Conversation
+-- The Devil's Own
+-- The Fugitive
+-- The Mosquito Coast
+-- The Star Wars Holiday Special
+-- What Lies Beneath
+-- Witness
+-- Working Girl
+
+
+-- 9.
+-- List the films where 'Harrison Ford' has appeared - but not in the starring role.
+--  [Note: the ord field of casting gives the position of the actor. If ord=1 then this actor is in the starring role]
+
+SELECT title
+FROM casting JOIN movie ON id = movieid
+WHERE actorid = 2216 AND ord <> 1
+
+-- output: 
+
+-- title
+-- A Hundred and One Nights
+-- American Graffiti
+-- Apocalypse Now
+-- Cowboys & Aliens
+-- Dead Heat on a Merry-Go-Round
+-- Extraordinary Measures
+-- Force 10 From Navarone
+-- Hawthorne of the U.S.A.
+-- Jimmy Hollywood
+-- More American Graffiti
+-- Morning Glory
+-- Sally of the Sawdust
+-- Shadows
+-- Smilin' Through
+-- Star Wars Episode IV: A New Hope
+-- Star Wars Episode V: The Empire Strikes Back
+-- Star Wars Episode VI: Return of the Jedi
+-- The Conversation
+-- Working Girl
+
+
+-- 10.
+-- List the films together with the leading star for all 1962 films.
+
+SELECT DISTINCT(title), name
+FROM movie JOIN casting ON id = movieid JOIN actor ON actor.id = actorid
+WHERE yr = 1962 AND ord = 1
+
+-- output: 
+
+-- title	name
+-- A Kind of Loving	Alan Bates
+-- A Symposium on Popular Songs	Paul Frees
+-- A Very Private Affair (Vie PrivÃ©e)	Brigitte Bardot
+-- An Autumn Afternoon	Chishu Ryu
+-- Atraco a las tres	JosÃ© Luis LÃ³pez VÃ¡zquez
+-- Barabbas	Anthony Quinn
+-- Battle Beyond the Sun (ÐÐµÐ±Ð¾ Ð·Ð¾Ð²ÐµÑ‚)	Aleksandr Shvorin
+-- Big and Little Wong Tin Bar	Jackie Chan
+-- Billy Budd	Terence Stamp
+-- Billy Rose's Jumbo	Doris Day
+-- Birdman of Alcatraz	Burt Lancaster
+-- Boccaccio '70	Anita Ekberg
+-- Bon Voyage!	Fred MacMurray
+-- Boys' Night Out	Kim Novak
+-- Cape Fear	Gregory Peck
+-- Carnival of Souls	Candace Hilligoss
+-- Carry On Cruising	Sid James
+-- David and Lisa	Keir Dullea
+-- Days of Wine and Roses	Jack Lemmon
+-- Dr. No	Sean Connery
+-- L'Eclisse	Alain Delon
+-- Tutti a casa	Alberto Sordi
+-- Experiment in Terror	Glenn Ford
+-- Eyes Without a Face	Pierre Brasseur
+-- Gay Purr-ee	Judy Garland
+-- Gigot	Jackie Gleason
+-- Gorath	Ryo Ikebe
+-- Gypsy	Rosalind Russell
+-- Half Ticket	Kishore Kumar
+-- Harakiri	Tatsuya Nakadai
+-- In Search of the Castaways	Hayley Mills
+-- It's Only Money	Jerry Lewis
+-- Jigsaw	Jack Warner
+-- Kid Galahad	Elvis Presley
+-- La commare secca	Marisa Solinas
+-- La notte	Marcello Mastroianni
+-- Life for Ruth	Michael Craig
+-- Lolita	James Mason
+-- Long Day's Journey into Night	Katharine Hepburn
+-- Love at Twenty	Jean-Pierre LÃ©aud
+-- Lycanthropus	Barbara Lass
+-- Mamma Roma	Anna Magnani
+-- Merrill's Marauders	Jeff Chandler
+-- Mother Joan of the Angels	Lucyna Winnicka
+-- Mr. Hobbs Takes a Vacation	James Stewart
+-- Mutiny on the Bounty	Marlon Brando
+-- On the Beat	Norman Wisdom
+-- Os Cafajestes	Daniel Filho
+-- Panic in Year Zero!	Ray Milland
+-- Period of Adjustment	Anthony Franciosa
+-- Results truncated. Only the first 50 rows have been shown.
+
+
