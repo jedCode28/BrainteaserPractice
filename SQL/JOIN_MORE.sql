@@ -402,3 +402,68 @@ WHERE name = 'Julie Andrews'
 -- Victor Victoria	Julie Andrews
 
 
+-- 13.
+-- Obtain a list, in alphabetical order, of actors who've had at least 15 starring roles.
+
+SELECT name
+FROM movie JOIN casting ON movieid = movie.id AND ord=1
+           JOIN actor ON actorid = actor.id
+GROUP BY name
+HAVING COUNT(name) >= 15
+
+-- output: 
+
+-- name
+-- Adam Sandler
+-- Al Pacino
+-- Anthony Hopkins
+-- Antonio Banderas
+-- Arnold Schwarzenegger
+-- Barbara Stanwyck
+-- Basil Rathbone
+-- Ben Affleck
+-- Bette Davis
+-- Betty Grable
+-- Bing Crosby
+-- Bruce Willis
+-- Bud Abbott
+-- Burt Lancaster
+-- Burt Reynolds
+-- Buster Keaton
+-- Cary Grant
+-- Charles Bronson
+-- Charlton Heston
+-- Clark Gable
+-- Claudette Colbert
+-- Clint Eastwood
+-- Dean Martin
+-- Dennis Quaid
+-- Denzel Washington
+-- Dirk Bogarde
+-- Dustin Hoffman
+-- Edward G. Robinson
+-- Elvis Presley
+-- Errol Flynn
+-- Frank Sinatra
+-- Fred Astaire
+-- Fredric March
+-- Gary Cooper
+-- GÃ©rard Depardieu
+-- Gene Hackman
+-- George Clooney
+-- Glenn Ford
+-- Gregory Peck
+-- Greta Garbo
+-- Harrison Ford
+-- Henry Fonda
+-- Humphrey Bogart
+-- Ingrid Bergman
+-- Jack Lemmon
+-- Jack Nicholson
+-- Jackie Chan
+-- James Cagney
+-- James Mason
+-- James Stewart
+-- Results truncated. Only the first 50 rows have been shown.
+
+
