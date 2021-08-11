@@ -361,3 +361,44 @@ HAVING COUNT(title) > 2
 -- 1961	3
 
 
+-- 12.
+-- List the film title and the leading actor for all of the films 'Julie Andrews' played in.
+
+
+SELECT title, name 
+FROM movie JOIN casting ON movieid = movie.id AND ord = 1
+JOIN actor ON actorid = actor.id
+WHERE movie.id IN (
+SELECT movieid FROM casting
+WHERE actorid IN (
+SELECT id FROM actor
+WHERE name = 'Julie Andrews'
+)
+)
+
+-- output: 
+
+-- title	name
+-- 10	Dudley Moore
+-- Darling Lili	Julie Andrews
+-- Despicable Me	Steve Carell
+-- Duet for One	Julie Andrews
+-- Hawaii	Julie Andrews
+-- Little Miss Marker	Walter Matthau
+-- Mary Poppins	Julie Andrews
+-- Relative Values	Julie Andrews
+-- S.O.B.	Julie Andrews
+-- Shrek the Third	Mike Myers
+-- Star!	Julie Andrews
+-- The Americanization of Emily	James Garner
+-- The Pink Panther Strikes Again	Peter Sellers
+-- The Princess Diaries	Anne Hathaway
+-- The Princess Diaries 2: Royal Engagement	Anne Hathaway
+-- The Sound of Music	Julie Andrews
+-- The Tamarind Seed	Julie Andrews
+-- Thoroughly Modern Millie	Julie Andrews
+-- Tooth Fairy	Dwayne Johnson
+-- Torn Curtain	Paul Newman
+-- Victor Victoria	Julie Andrews
+
+
