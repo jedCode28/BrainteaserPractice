@@ -467,3 +467,69 @@ HAVING COUNT(name) >= 15
 -- Results truncated. Only the first 50 rows have been shown.
 
 
+-- 14.
+-- List the films released in the year 1978 ordered by the number of actors in the cast, then by title.
+
+SELECT DISTINCT(title), COUNT(actorid) 
+FROM movie JOIN casting ON movie.id = movieid
+           JOIN actor ON actor.id = actorid
+WHERE yr = 1978
+GROUP BY title
+ORDER BY COUNT(actorid) DESC, title
+
+-- output: 
+
+-- title	COUNT(actorid)
+-- The Bad News Bears Go to Japan	50
+-- The Swarm	37
+-- Grease	28
+-- American Hot Wax	27
+-- The Boys from Brazil	26
+-- Heaven Can Wait	25
+-- Big Wednesday	21
+-- A Night Full of Rain	19
+-- A Wedding	19
+-- Orchestra Rehearsal	19
+-- The Cheap Detective	19
+-- Go Tell the Spartans	18
+-- Death on the Nile	17
+-- Movie Movie	17
+-- Superman	17
+-- The Cat from Outer Space	17
+-- The Driver	17
+-- The Star Wars Holiday Special	17
+-- Blue Collar	16
+-- Ice Castles	16
+-- International Velvet	16
+-- J.R.R. Tolkien's The Lord of the Rings	16
+-- Alexandria... Why?	15
+-- Bye Bye Monkey	15
+-- Coming Home	15
+-- David	15
+-- Gray Lady Down	15
+-- Occupation in 26 Pictures	15
+-- Revenge of the Pink Panther	15
+-- The Brink's Job	15
+-- The Chant of Jimmie Blacksmith	15
+-- The Water Babies	15
+-- Violette NoziÃ¨re	15
+-- Who'll Stop The Rain	15
+-- Without Anesthesia	15
+-- Bread and Chocolate	14
+-- Closed Circuit	14
+-- Damien: Omen II	14
+-- I Wanna Hold Your Hand	14
+-- The Empire of Passion	14
+-- Almost Summer	13
+-- An Unmarried Woman	13
+-- Foul Play	13
+-- Goin' South	13
+-- The Left-Handed Woman	13
+-- California Suite	12
+-- Force 10 From Navarone	12
+-- In Praise of Older Women	12
+-- Jaws 2	12
+-- Midnight Express	12
+-- Results truncated. Only the first 50 rows have been shown.
+
+
