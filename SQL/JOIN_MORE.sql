@@ -533,3 +533,62 @@ ORDER BY COUNT(actorid) DESC, title
 -- Results truncated. Only the first 50 rows have been shown.
 
 
+-- 15.
+-- List all the people who have worked with 'Art Garfunkel'.
+
+SELECT DISTINCT(name) AS name
+FROM movie JOIN casting ON movieid = movie.id
+           JOIN actor ON actorid=actor.id
+WHERE movieid = 10095 OR
+      movieid = 11434 OR
+      movieid = 13630 
+GROUP BY movieid,name
+HAVING name <> 'Art Garfunkel'SELECT DISTINCT(name) AS name
+FROM movie JOIN casting ON movieid = movie.id
+           JOIN actor ON actorid=actor.id
+WHERE movieid = 10095 OR
+      movieid = 11434 OR
+      movieid = 13630 
+GROUP BY movieid,name
+HAVING name <> 'Art Garfunkel'
+
+-- output: 
+
+-- name
+-- Beverly Johnson
+-- Breckin Meyer
+-- Bruce Jay Friedman
+-- Cameron Mathison
+-- Cecilie Thomsen
+-- Cindy Crawford
+-- Donald Trump
+-- Elio Fiorucci
+-- Ellen Albertini Dow
+-- Frederique van der Wal
+-- Georgina Grenville
+-- Heather Matarazzo
+-- Heidi Klum
+-- Lauren Hutton
+-- Lorna Luft
+-- Mark Ruffalo
+-- Michael York
+-- Mike Myers
+-- Neve Campbell
+-- Peter Bogdanovich
+-- Ron Jeremy
+-- Ryan Phillippe
+-- Salma Hayek
+-- Sela Ward
+-- Sherry Stringfield
+-- Sheryl Crow
+-- Skipp Sudduth
+-- Stars on 54
+-- Thelma Houston
+-- Valerie Perrine
+-- Veronica Webb
+-- Bill Paxton
+-- Julian Sands
+-- Kurtwood Smith
+-- Sherilyn Fenn
+-- Harris Yulin
+-- Robert DoQui
