@@ -99,3 +99,84 @@ WHERE population > 200000000
 -- United States	51032.29454636844
 
 
+-- 4.
+-- Show the name and population in millions for the countries of the continent 'South America'.
+-- Divide the population by 1000000 to get population in millions.
+
+SELECT name, (population/1000000)
+FROM world
+WHERE continent = 'South America'
+
+-- output: 
+
+-- name	
+-- Argentina	42.6695
+-- Bolivia	10.027254
+-- Brazil	202.794
+-- Chile	17.773
+-- Colombia	47.662
+-- Ecuador	15.7742
+-- Guyana	0.784894
+-- Paraguay	6.783374
+-- Peru	30.475144
+-- Saint Vincent and the Grenadines	0.109
+-- Suriname	0.534189
+-- Uruguay	3.286314
+-- Venezuela	28.946101
+
+
+-- 5.
+-- Show the name and population for France, Germany, Italy
+
+SELECT name, population
+FROM world
+WHERE name = 'France' OR
+      name = 'Germany' OR 
+      name = 'Italy'
+
+-- output: 
+
+-- name	population
+-- France	65906000
+-- Germany	80716000
+-- Italy	60782668
+
+
+-- 6.
+-- Show the countries which have a name that includes the word 'United'
+
+SELECT name
+FROM world
+WHERE name LIKE '%United%'
+
+-- output: 
+
+-- name
+-- United Arab Emirates
+-- United Kingdom
+-- United States
+
+
+-- 7.
+-- Two ways to be big: A country is big if it has an area of more than 3 million sq km 
+-- or it has a population of more than 250 million.
+-- Show the countries that are big by area or big by population. Show name, population and area.
+
+SELECT name, population, area
+FROM world
+WHERE population > 250000000 OR
+      area > 3000000
+
+-- output: 
+
+-- name	population	area
+-- Australia	23545500	7692024
+-- Brazil	202794000	8515767
+-- Canada	35427524	9984670
+-- China	1365370000	9596961
+-- India	1246160000	3166414
+-- Indonesia	252164800	1904569
+-- Russia	146000000	17125242
+-- United States	318320000	9826675
+
+
