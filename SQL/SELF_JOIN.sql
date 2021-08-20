@@ -199,24 +199,24 @@ WHERE astop.name='Craiglockhart'
 -- Show the bus no. and company for the first bus, the name of the stop for the transfer,
 -- and the bus no. and company for the second bus.
 
-SELECT DISTINCT one.num as FirstBus, one.company as FirstComp, one.name as Transfer, two.num as SecBus, two.company as SecComp
+SELECT DISTINCT one.num AS FirstBus, one.company AS FirstComp, one.name AS Transfer, two.num AS SecBus, two.company AS SecComp
 
 FROM
 
-    (select distinct a.num, a.company, yy.name
-     from route a join route b on (a.company=b.company and a.num=b.num) 
-                  join stops xx on (xx.id=a.stop) 
-                  join stops yy on (yy.id=b.stop)
-     where xx.name='Craiglockhart' and yy.name<>'Lochend'
+    (SELECT DISTINCT a.num, a.company, yy.name
+     FROM route a JOIN route b ON (a.company=b.company AND a.num=b.num) 
+                  JOIN stops xx ON (xx.id=a.stop) 
+                  JOIN stops yy ON (yy.id=b.stop)
+     WHERE xx.name='Craiglockhart' AND yy.name<>'Lochend'
      ) AS one
 
 JOIN
 
-    (select distinct c.num, d.company, mm.name
-     from route c join route d on (c.company=d.company and c.num=d.num) 
-                  join stops mm on (mm.id=c.stop) 
-                  join stops nn on (nn.id=d.stop)
-     where mm.name <> 'Craiglockhart' and nn.name='Lochend'
+    (SELECT DISTINCT c.num, d.company, mm.name
+     FROM route c JOIN route d ON (c.company=d.company AND c.num=d.num) 
+                  JOIN stops mm ON (mm.id=c.stop) 
+                  JOIN stops nn ON (nn.id=d.stop)
+     WHERE mm.name <> 'Craiglockhart' AND nn.name='Lochend'
      ) AS two
 
 ON (two.name=one.name)
